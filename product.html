@@ -139,7 +139,10 @@
 				        </select>
 							</div>
 						</div>
-						<div class="row">
+
+		
+
+						<div id="product-container" class="row">
 							<div class="col-md-4 d-flex">
 								<div class="product ftco-animate">
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/prod-1.jpg);">
@@ -528,5 +531,217 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
   <script src="js/main.js"></script>
     
+
+  <script>
+	// Function to fetch and render products
+async function loadProducts() {
+    const productContainer = document.getElementById('product-container');
+
+    try {
+        // Replace 'products.json' with your actual Express API endpoint (e.g., '/api/products')
+        const response = await fetch('./data/products.json');
+        
+        // Check if the response is successful (status 200-299)
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const products = await response.json();
+        
+        // Clear the container (useful if you had a "loading..." spinner in the HTML)
+        productContainer.innerHTML = '';
+
+        // Iterate through the JSON data and build the HTML
+        products.forEach(product => {
+            
+            // 1. Determine Badge HTML
+            let badgeHtml = '';
+            if (product.badge === 'Sale') {
+                badgeHtml = `<span class="sale">Sale</span>`;
+            } else if (product.badge === 'Best Seller') {
+                badgeHtml = `<span class="seller">Best Seller</span>`;
+            } else if (product.badge === 'New Arrival') {
+                badgeHtml = `<span class="new">New Arrival</span>`;
+            }
+
+            // 2. Determine Pricing HTML
+            let priceHtml = '';
+            if (product.original_price) {
+                // toFixed(2) ensures prices like 69 show as 69.00
+                priceHtml = `<span class="price price-sale">$${product.original_price.toFixed(2)}</span> <span class="price">$${product.price.toFixed(2)}</span>`;
+            } else {
+                priceHtml = `<span class="price">$${product.price.toFixed(2)}</span>`;
+            }
+
+            // 3. Construct the Product Card HTML
+            // Note: I removed the 'ftco-animate' class here because elements injected after 
+            // page load often miss the initial animation trigger depending on the library used.
+            const productHTML = `
+                <div class="col-md-4 d-flex mb-4">
+                    <div class="product">
+                        <div class="img d-flex align-items-center justify-content-center" style="background-image: url(${product.image_url});">
+                            <div class="desc">
+                                <p class="meta-prod d-flex">
+                                    <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
+                                    <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
+                                    <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="text text-center mt-3">
+                            ${badgeHtml}
+                            <span class="category">${product.category}</span>
+                            <h2>${product.name}</h2>
+                            <p class="mb-0">${priceHtml}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Append the generated HTML to the container
+            productContainer.innerHTML += productHTML;
+        });
+
+    } catch (error) {
+        console.error('Error fetching product data:', error);
+        
+        // Fail gracefully in the UI
+        productContainer.innerHTML = `
+            <div class="col-12 text-center py-5">
+                <h4 class="text-danger">Oops! We couldn't load the products.</h4>
+                <p>Please check your connection or try refreshing the page.</p>
+            </div>
+        `;
+    }
+}
+
+// Execute the function when the DOM is fully loaded
+
+//document.addEventListener('DOMContentLoaded', loadProducts);
+
+
+/**
+ * DATA FLOW OVERVIEW:
+ * 1. Page Loads -> Calls requestProducts()
+ * 2. requestProducts() -> Calls fetch('products.json') to get data from the server.
+ * 3. Server responds with JSON -> Converted into a JavaScript Array of objects.
+ * 4. Array of objects -> Passed as an argument to renderUI(products).
+ * 5. renderUI() -> Loops through the Array, builds HTML, and injects it into the DOM.
+ */
+
+// 1. Trigger the sequence when the HTML is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    requestProducts();
+});
+
+/**
+ * SEQUENCE STEP 1: requestProducts()
+ * Responsibility: Handle the network request and data fetching. 
+ * It knows NOTHING about HTML or how the products look.
+ */
+async function requestProducts() {
+    const productContainer = document.getElementById('product-container');
+
+    try {
+        // SEQUENCE STEP 2: fetch(path-to-json-file)
+        // Initiates a network request to grab the JSON file. 'await' pauses this 
+        // function until the server responds.
+        const response = await fetch('./data/products.json');
+        
+        // If the file doesn't exist (404) or server crashes (500), throw an error to jump to the catch block.
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        // Data Flow: We receive raw text from the server. .json() parses it 
+        // into a usable JavaScript Array (the 20 products we generated earlier).
+        const productsData = await response.json();
+        
+        // SEQUENCE STEP 3: Pass data to renderUI()
+        // The data successfully arrived. Now we hand it off to the visual department.
+        renderUI(productsData);
+
+    } catch (error) {
+        // Error Flow: If anything goes wrong in the fetch or parsing, execution jumps here.
+        console.error('Error fetching product data:', error);
+        
+        // Safely show an error message to the user instead of a blank screen.
+        productContainer.innerHTML = `
+            <div class="col-12 text-center py-5">
+                <h4 class="text-danger">Oops! We couldn't load the products.</h4>
+                <p>Please check your connection or try refreshing the page.</p>
+            </div>
+        `;
+    }
+}
+
+/**
+ * SEQUENCE STEP 4: renderUI()
+ * Responsibility: Take raw data and turn it into HTML. 
+ * It knows NOTHING about where the data came from (network, local storage, etc.).
+ * * @param {Array} products - The array of product objects passed from requestProducts()
+ */
+function renderUI(products) {
+    // Locate the grid container in the DOM
+    const productContainer = document.getElementById('product-container');
+
+    // Clear the container (removes the "Loading products..." text from the HTML)
+    productContainer.innerHTML = '';
+
+    // Data Flow: Loop through every single product object inside the array
+    products.forEach(product => {
+        
+        // --- DATA FORMATTING ---
+        // Before building the HTML, we must format the raw data based on our business logic.
+
+        // Logic 1: Determine which badge to show based on the 'badge' property
+        let badgeHtml = '';
+        if (product.badge === 'Sale') {
+            badgeHtml = `<span class="sale">Sale</span>`;
+        } else if (product.badge === 'Best Seller') {
+            badgeHtml = `<span class="seller">Best Seller</span>`;
+        } else if (product.badge === 'New Arrival') {
+            badgeHtml = `<span class="new">New Arrival</span>`;
+        }
+
+        // Logic 2: Determine price layout. If original_price exists, it's on sale.
+        let priceHtml = '';
+        if (product.original_price) {
+            // .toFixed(2) forces the data to show 2 decimal places (e.g., 69 -> 69.00)
+            priceHtml = `<span class="price price-sale">$${product.original_price.toFixed(2)}</span> <span class="price">$${product.price.toFixed(2)}</span>`;
+        } else {
+            priceHtml = `<span class="price">$${product.price.toFixed(2)}</span>`;
+        }
+
+        // --- HTML CONSTRUCTION ---
+        // Inject the formatted data and exact properties (name, category, image_url) into the HTML string
+        const productHTML = `
+            <div class="col-md-4 d-flex mb-4">
+                <div class="product">
+                    <div class="img d-flex align-items-center justify-content-center" style="background-image: url(${product.image_url});">
+                        <div class="desc">
+                            <p class="meta-prod d-flex">
+                                <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
+                                <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
+                                <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="text text-center mt-3">
+                        ${badgeHtml}
+                        <span class="category">${product.category}</span>
+                        <h2>${product.name}</h2>
+                        <p class="mb-0">${priceHtml}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // --- DOM UPDATE ---
+        // Take the finished HTML string for this specific product and append it to the container
+        productContainer.innerHTML += productHTML;
+    });
+}
+  </script>
   </body>
 </html>

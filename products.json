@@ -1,0 +1,78 @@
+[
+  {
+    "name": "Bacardi 151",
+    "category": "Brandy",
+    "price": 49.00,
+    "original_price": 69.00,
+    "image_url": "images/prod-1.jpg",
+    "badge": "Sale"
+  },
+  {
+    "name": "Jim Beam Kentucky Straight",
+    "category": "Gin",
+    "price": 69.00,
+    "image_url": "images/prod-2.jpg",
+    "badge": "Best Seller"
+  },
+  {
+    "name": "Citadelle",
+    "category": "Rum",
+    "price": 69.00,
+    "image_url": "images/prod-3.jpg",
+    "badge": "New Arrival"
+  },
+  {
+    "name": "The Glenlivet",
+    "category": "Rum",
+    "price": 69.00,
+    "image_url": "images/prod-4.jpg"
+  },
+  {
+    "name": "Black Label",
+    "category": "Whiskey",
+    "price": 69.00,
+    "image_url": "images/prod-5.jpg"
+  },
+  {
+    "name": "Macallan",
+    "category": "Tequila",
+    "price": 69.00,
+    "image_url": "images/prod-6.jpg"
+  },
+  {
+    "name": "Old Monk",
+    "category": "Vodka",
+    "price": 69.00,
+    "image_url": "images/prod-7.jpg"
+  },
+  {
+    "name": "Jameson Irish Whiskey",
+    "category": "Whiskey",
+    "price": 69.00,
+    "image_url": "images/prod-8.jpg"
+  },
+  {
+    "name": "Screwball",
+    "category": "Whiskey",
+    "price": 69.00,
+    "image_url": "images/prod-9.jpg"
+  },
+  {
+    "name": "Screwball",
+    "category": "Whiskey",
+    "price": 69.00,
+    "image_url": "images/prod-10.jpg"
+  },
+  {
+    "name": "McClelland's",
+    "category": "Whiskey",
+    "price": 69.00,
+    "image_url": "images/prod-11.jpg"
+  },
+  {
+    "name": "Plantation",
+    "category": "Whiskey",
+    "price": 69.00,
+    "image_url": "images/prod-12.jpg"
+  }
+]

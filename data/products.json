@@ -1,0 +1,192 @@
+[
+  {
+    "id": 1,
+    "name": "Bacardi 151",
+    "category": "Rum",
+    "price": 49.00,
+    "original_price": 69.00,
+    "badge": "Sale",
+    "image_url": "images/prod-1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Jim Beam Kentucky Straight",
+    "category": "Whiskey",
+    "price": 30.89,
+    "original_price": null,
+    "badge": "Best Seller",
+    "image_url": "images/prod-2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Citadelle",
+    "category": "Gin",
+    "price": 22.50,
+    "original_price": null,
+    "badge": "New Arrival",
+    "image_url": "images/prod-3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "The Glenlivet",
+    "category": "Whiskey",
+    "price": 69.00,
+    "original_price": null,
+    "badge": null,
+    "image_url": "images/prod-4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Johnnie Walker Black Label",
+    "category": "Whiskey",
+    "price": 45.00,
+    "original_price": null,
+    "badge": null,
+    "image_url": "images/prod-5.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Macallan 12 Year",
+    "category": "Whiskey",
+    "price": 75.00,
+    "original_price": null,
+    "badge": "Best Seller",
+    "image_url": "images/prod-6.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Old Monk",
+    "category": "Rum",
+    "price": 18.00,
+    "original_price": 24.00,
+    "badge": "Sale",
+    "image_url": "images/prod-7.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Jameson Irish Whiskey",
+    "category": "Whiskey",
+    "price": 29.99,
+    "original_price": null,
+    "badge": null,
+    "image_url": "images/prod-8.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Skrewball Peanut Butter",
+    "category": "Whiskey",
+    "price": 26.50,
+    "original_price": null,
+    "badge": "New Arrival",
+    "image_url": "images/prod-9.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Jack Daniel's Old No. 7",
+    "category": "Whiskey",
+    "price": 24.00,
+    "original_price": null,
+    "badge": null,
+    "image_url": "images/prod-10.jpg"
+  },
+  {
+    "id": 11,
+    "name": "McClelland's",
+    "category": "Whiskey",
+    "price": 32.00,
+    "original_price": null,
+    "badge": null,
+    "image_url": "images/prod-11.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Plantation",
+    "category": "Rum",
+    "price": 28.50,
+    "original_price": null,
+    "badge": null,
+    "image_url": "images/prod-12.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Grey Goose",
+    "category": "Vodka",
+    "price": 35.00,
+    "original_price": null,
+    "badge": "Best Seller",
+    "image_url": "images/prod-1.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Patrón Silver",
+    "category": "Tequila",
+    "price": 45.00,
+    "original_price": 55.00,
+    "badge": "Sale",
+    "image_url": "images/prod-2.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Hennessy VS",
+    "category": "Brandy",
+    "price": 40.00,
+    "original_price": null,
+    "badge": null,
+    "image_url": "images/prod-3.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Bombay Sapphire",
+    "category": "Gin",
+    "price": 28.00,
+    "original_price": null,
+    "badge": "New Arrival",
+    "image_url": "images/prod-4.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Captain Morgan Original Spiced",
+    "category": "Rum",
+    "price": 14.99,
+    "original_price": 19.99,
+    "badge": "Sale",
+    "image_url": "images/prod-5.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Absolut Vodka",
+    "category": "Vodka",
+    "price": 19.99,
+    "original_price": null,
+    "badge": null,
+    "image_url": "images/prod-6.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Don Julio 1942",
+    "category": "Tequila",
+    "price": 160.00,
+    "original_price": null,
+    "badge": null,
+    "image_url": "images/prod-7.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Courvoisier VSOP",
+    "category": "Brandy",
+    "price": 50.00,
+    "original_price": null,
+    "badge": "Best Seller",
+    "image_url": "images/prod-8.jpg"
+  },
+
+   {
+    "id": 21,
+    "name": "Courvoisier VSOP",
+    "category": "Brandy",
+    "price": 50.00,
+    "original_price": null,
+    "badge": "Best Seller",
+    "image_url": "images/prod-8.jpg"
+  }
+]
