@@ -553,6 +553,7 @@
   <script src="js/google-map.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
     
 
   <script>
@@ -605,7 +606,7 @@ async function loadProducts() {
                         <div class="img d-flex align-items-center justify-content-center" style="background-image: url(${product.image_url});">
                             <div class="desc">
                                 <p class="meta-prod d-flex">
-                                    <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
+                                    <button type="button" class="add-to-cart d-flex align-items-center justify-content-center" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}"><span class="flaticon-shopping-bag"></span></button>
                                     <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
                                     <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
                                 </p>
@@ -744,7 +745,7 @@ function renderUI(products) {
                     <div class="img d-flex align-items-center justify-content-center" style="background-image: url(${product.image_url});">
                         <div class="desc">
                             <p class="meta-prod d-flex">
-                                <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
+                                <button type="button" class="add-to-cart d-flex align-items-center justify-content-center" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}"><span class="flaticon-shopping-bag"></span></button>
                                 <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
                                 <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
                             </p>
@@ -766,36 +767,7 @@ function renderUI(products) {
     });
 }
 
-// ===== SEARCH BOX FUNCTIONALITY =====
-// This section handles all search box operations
-
-/**
- * Filters an array of products based on search term and category
- * @param {string} searchTerm - The search term to match against product names (case-insensitive)
- * @param {string} category - The category to filter by ('All' returns all matches regardless of category)
- * @returns {Array} - Filtered array of products matching both search and category criteria
- */
-function filterProducts(searchTerm, category) {
-    // Convert search term to lowercase for case-insensitive comparison
-    const lowerSearchTerm = searchTerm.toLowerCase();
-    
-    // Use filter() to create a new array containing only products that match our criteria
-    return allProducts.filter(product => {
-        // Check if the product name includes the search term (converted to lowercase for comparison)
-        const nameMatches = product.name.toLowerCase().includes(lowerSearchTerm);
-        
-        // If category is 'All', skip category filtering (accept any category)
-        // Otherwise, check if the product's category exactly matches the specified category
-        const categoryMatches = category === 'All' || product.category === category;
-        
-        // Return true only if BOTH conditions are met:
-        // 1. The product name contains the search term
-        // 2. The product's category matches (or category filter is 'All')
-        return nameMatches && categoryMatches;
-    });
-}
-
-document.addEventListener('DOMContentLoaded', function() {
+// ===== SEARCH BOX SETUP =====
     const searchInput = document.getElementById('searchInput');
     const searchForm = document.getElementById('searchForm');
     const searchResults = document.getElementById('searchResults');
@@ -889,11 +861,50 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = `product.html?search=${encodeURIComponent(query)}`;
         }
     });
-});
+
   </script>
 
   <!-- Search Box Styling -->
   <style>
+  /* ===== ADD TO CART BUTTON STYLES (Match heart & visibility icons) ===== */
+  .add-to-cart {
+      background: none;
+      border: none;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+      margin: 0;
+      font-size: 16px;
+  }
+
+  .add-to-cart:hover {
+      color: #f96d00;
+      transform: scale(1.15);
+  }
+
+  .add-to-cart:focus {
+      outline: none;
+      box-shadow: none;
+  }
+
+  .add-to-cart span {
+      pointer-events: none;
+  }
+
+  /* Cart badge styling */
+  .btn-cart small {
+      transition: all 0.3s ease;
+      display: inline-block;
+      background-color: #f96d00;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 50%;
+      font-weight: bold;
+      min-width: 20px;
+      text-align: center;
+  }
+
   .search-box-wrapper {
       flex: 1;
       margin: 0 20px;
