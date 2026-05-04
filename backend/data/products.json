@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Bacardi 151",
+    "category": "Rum",
+    "price": 49.00,
+    "original_price": 69.00,
+    "badge": "Sale",
+    "image_url": "images/prod-1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Jim Beam Kentucky Straight",
+    "category": "Whiskey",
+    "price": 30.89,
+    "original_price": null,
+    "badge": "Best Seller",
+    "image_url": "images/prod-2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Citadelle",
+    "category": "Gin",
+    "price": 22.50,
+    "original_price": null,
+    "badge": "New Arrival",
+    "image_url": "images/prod-3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "The Glenlivet",
+    "category": "Whiskey",
+    "price": 69.00,
+    "original_price": null,
+    "badge": null,
+    "image_url": "images/prod-4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Johnnie Walker Black Label",
+    "category": "Whiskey",
+    "price": 45.00,
+    "original_price": null,
+    "badge": null,
+    "image_url": "images/prod-5.jpg"
+  }
+]
