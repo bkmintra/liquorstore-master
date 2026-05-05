@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const sqlite3 = require('sqlite3').verbose();
+const bcrypt = require('bcrypt');
 const fs = require('fs');
 const path = require('path');
 
@@ -7,6 +9,7 @@ console.log("✅ โหลดไฟล์ routes/auth.js สำเร็จแ�
 
 // 📌 ชี้ Path ไปที่ไฟล์ auth_user.json (ตรวจสอบ Path ให้ตรงกับโฟลเดอร์ของคุณ)
 const usersFilePath = path.join(__dirname, '../data/auth_user.json');
+
 
 // ==========================================
 // 🟢 1. API สำหรับ Login (รองรับการยิงมาที่ /api/login)
@@ -75,6 +78,7 @@ router.post('/auth/register', (req, res) => {
         }
     });
 });
+
 
 // 📌 ส่งออก Router
 module.exports = router;

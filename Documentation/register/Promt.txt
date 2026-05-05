@@ -1,0 +1,7 @@
+Act as a Full Stack Developer. Based on the User Registration API Contract and Sequence Diagram we discussed, please generate the corresponding code for an E-commerce web application.
+
+Write the Express.js route (routes/auth.js) using sqlite3 for the database and bcrypt for password hashing.
+
+Write the Frontend logic (register.js) using the fetch API to send the POST request, and include Regex password validation before sending.
+
+CRITICAL: Ensure your code has extensive comments explaining exactly how each step works, as this is a requirement for my assignment.

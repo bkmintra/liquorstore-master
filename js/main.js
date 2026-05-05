@@ -224,3 +224,39 @@
 
 })(jQuery);
 
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. ดึง Token ออกมาจาก localStorage
+    const token = localStorage.getItem('authToken');
+    
+    // 2. ค้นหาจุดที่เป็นเมนู Sign Up / Log In (ใช้ class .reg ตาม HTML ของเทมเพลต)
+    const userMenuBox = document.querySelector('.reg');
+
+    // ถ้ามี Token (ล็อกอินแล้ว) และเจอ div .reg
+    if (token && userMenuBox) {
+        // 3. สลับ HTML ข้างในให้กลายเป็นปุ่ม My Account และ Log Out
+        userMenuBox.innerHTML = `
+            <p class="mb-0">
+                <span class="mr-3" style="color: rgba(255, 255, 255, 0.7);"><i class="fa fa-user"></i> My Account</span>
+                <a href="#" id="logoutBtn" class="mr-2 text-danger">Log Out</a>
+            </p>
+        `;
+
+        // 4. ผูกคำสั่งให้ปุ่ม Log Out ทำงาน
+        const logoutBtn = document.getElementById('logoutBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', (e) => {
+                e.preventDefault(); // ป้องกันเว็บเด้งกลับไปบนสุด
+                
+                // ลบ Token ออกจากเครื่อง
+                localStorage.removeItem('authToken');
+                
+                alert('ออกจากระบบเรียบร้อยแล้วครับ!');
+                
+                // เด้งกลับไปหน้าหลัก (พอกลับมาหน้าหลัก Token หายไป ปุ่ม Log In ก็จะกลับมาเหมือนเดิม)
+                window.location.href = 'index.html'; 
+            });
+        }
+    }
+});
+
+

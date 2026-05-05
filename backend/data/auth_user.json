@@ -58,5 +58,23 @@
         "password": "password123",
         "first_name": "Skyler",
         "date_of_registration": "2025-07-06"
+    },
+    {
+        "username": "bkmintra@gmail.com",
+        "password": "123",
+        "first_name": "mamamu",
+        "date_of_registration": "2026-05-05"
+    },
+    {
+        "username": "llll@gami.com",
+        "password": "123",
+        "first_name": "mamamu",
+        "date_of_registration": "2026-05-05"
+    },
+    {
+        "username": "bk@gmail.com",
+        "password": "jjudijdijidjid!@",
+        "first_name": "Riley",
+        "date_of_registration": "2026-05-05"
     }
 ]
