@@ -1,0 +1,62 @@
+[
+    {
+        "username": "alex1@ecommerce-local.dev",
+        "password": "dd274b71dcc9298d7db94487910dfc39",
+        "first_name": "Alex",
+        "date_of_registration": "2026-04-21"
+    },
+    {
+        "username": "jordan2@ecommerce-local.dev",
+        "password": "cd158444386964b1e174f3583471e2f4",
+        "first_name": "Jordan",
+        "date_of_registration": "2025-12-29"
+    },
+    {
+        "username": "taylor3@example.com",
+        "password": "7b153add830db662e35869f2cfe4990f",
+        "first_name": "Taylor",
+        "date_of_registration": "2026-03-12"
+    },
+    {
+        "username": "morgan4@ecommerce-local.dev",
+        "password": "f894c2c40f87826a807d2659a85b94f7",
+        "first_name": "Morgan",
+        "date_of_registration": "2026-03-20"
+    },
+    {
+        "username": "casey5@ecommerce-local.dev",
+        "password": "52b395900cc916ccfd0d5ee475b22eae",
+        "first_name": "Casey",
+        "date_of_registration": "2026-04-17"
+    },
+    {
+        "username": "riley6@example.com",
+        "password": "b59f0d3a6788528722e0cf240b00931e",
+        "first_name": "Riley",
+        "date_of_registration": "2026-01-12"
+    },
+    {
+        "username": "jamie7@example.com",
+        "password": "3d2d4df60921997822d5ceac364c187d",
+        "first_name": "Jamie",
+        "date_of_registration": "2025-06-29"
+    },
+    {
+        "username": "quinn8@example.com",
+        "password": "b599db0d457f300731cab19f3b1a5d6e",
+        "first_name": "Quinn",
+        "date_of_registration": "2025-06-05"
+    },
+    {
+        "username": "avery9@ecommerce-local.dev",
+        "password": "516477fa809cc77c974f3d10c56d8c2a",
+        "first_name": "Avery",
+        "date_of_registration": "2025-10-01"
+    },
+    {
+        "username": "skyler10@example.com",
+        "password": "e8719446fce63fa883b6e050989ccada",
+        "first_name": "Skyler",
+        "date_of_registration": "2025-07-06"
+    }
+]
